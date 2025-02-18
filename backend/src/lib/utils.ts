@@ -10,7 +10,7 @@ export default function generateToken(userId: string, res: Response) {
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development",
-    sameSite: "strict",
+    sameSite: "lax",
   });
 
   return token;
