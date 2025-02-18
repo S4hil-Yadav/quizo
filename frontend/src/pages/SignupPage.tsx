@@ -8,10 +8,10 @@ import { useSignupMutation } from "../lib/mutations/auth.mutations";
 
 export default function SignupPage() {
   const [userFields, setUserFields] = useState({
-    fullname: "Sahil Yadav",
-    username: "S4hil",
-    email: "sahil@gmail.com",
-    password: "123456",
+    fullname: "",
+    username: "",
+    email: "",
+    password: "",
   });
 
   const inputs = useRef(null);

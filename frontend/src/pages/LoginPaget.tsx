@@ -8,8 +8,8 @@ import { useLoginMutation } from "../lib/mutations/auth.mutations";
 
 export default function LoginPage() {
   const [userFields, setUserFields] = useState({
-    email: "sahil@gmail.com",
-    password: "123456",
+    email: "",
+    password: "",
   });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
