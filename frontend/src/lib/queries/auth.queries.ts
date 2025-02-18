@@ -5,7 +5,7 @@ import axiosInstance from "../axios";
 export function useGetAuthQuery() {
   return useQuery({
     queryKey: ["authUser"],
-    queryFn: () => axiosInstance.get("/api/v1/auth").then((res) => res.data),
+    queryFn: () => axiosInstance.get("/auth").then((res) => res.data),
 
     refetchOnReconnect: true,
     retry: (count, err) => {

@@ -8,7 +8,7 @@ export function useGetQuizesQuery() {
 
   return useQuery({
     queryKey: ["quizes", authUser?.id],
-    queryFn: () => axiosInstance.get("/api/v1/quizes").then((res) => res.data),
+    queryFn: () => axiosInstance.get("/quizes").then((res) => res.data),
     enabled: !!authUser?.id,
   });
 }
@@ -20,7 +20,7 @@ export function useGetQuizQuery({ quizId }: { quizId: string }) {
   return useQuery({
     queryKey: ["quiz", quizId],
     queryFn: () =>
-      axiosInstance.get("/api/v1/quizes/" + quizId).then((res) => res.data),
+      axiosInstance.get("/quizes/" + quizId).then((res) => res.data),
     enabled: !!authUser?.id,
   });
 }

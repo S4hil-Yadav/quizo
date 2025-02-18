@@ -13,7 +13,7 @@ export function useCreateQuizMutation() {
 
   return useMutation({
     mutationFn: ({ quiz }: { quiz: TypeQuiz }) =>
-      axiosInstance.post("/api/v1/quizes", { quiz }),
+      axiosInstance.post("/quizes", { quiz }),
     onSuccess: () => {
       toast.success("Quiz created");
       queryClient.invalidateQueries({ queryKey: ["quizes", authUser!.id] });
@@ -28,7 +28,7 @@ export function useUpdateQuizMutation() {
 
   return useMutation({
     mutationFn: ({ newQuiz }: { newQuiz: TypeQuiz }) =>
-      axiosInstance.put("/api/v1/quizes/" + newQuiz.id, { newQuiz }),
+      axiosInstance.put("/quizes/" + newQuiz.id, { newQuiz }),
     onSuccess: () => {
       toast.success("Quiz updated");
       queryClient.invalidateQueries({ queryKey: ["quizes", authUser!.id] });
@@ -42,7 +42,7 @@ export function useDeleteQuizMutation() {
 
   return useMutation({
     mutationFn: ({ quizId }: { quizId: string }) =>
-      axiosInstance.delete("/api/v1/quizes/" + quizId),
+      axiosInstance.delete("/quizes/" + quizId),
     onSuccess: async () => {
       toast.success("Quiz deleted");
       await queryClient.invalidateQueries({

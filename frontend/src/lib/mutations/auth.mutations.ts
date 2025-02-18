@@ -12,7 +12,7 @@ export function useSignupMutation() {
       userFields,
     }: {
       userFields: Omit<TypeUser, "profilePicture">;
-    }) => axiosInstance.post("/api/v1/auth/signup", { userFields }),
+    }) => axiosInstance.post("/auth/signup", { userFields }),
     onSuccess: () => {
       toast.success("Signup successful");
       queryClient.invalidateQueries({ queryKey: ["authUser"] });
@@ -28,7 +28,7 @@ export function useLoginMutation() {
       userFields,
     }: {
       userFields: Omit<TypeUser, "fullname" | "username" | "profilePicture">;
-    }) => axiosInstance.post("/api/v1/auth/login", { userFields }),
+    }) => axiosInstance.post("/auth/login", { userFields }),
     onSuccess: () => {
       toast.success("Login successful");
       queryClient.invalidateQueries({ queryKey: ["authUser"] });
@@ -41,7 +41,7 @@ export function useLogoutMutation() {
     navigate = useNavigate();
 
   return useMutation({
-    mutationFn: () => axiosInstance.post("/api/v1/auth/logout"),
+    mutationFn: () => axiosInstance.post("/auth/logout"),
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: ["authUser"],
@@ -57,7 +57,7 @@ export function useUpdateUserMutation() {
 
   return useMutation({
     mutationFn: ({ formData }: { formData: FormData }) =>
-      axiosInstance.put("/api/v1/auth", formData),
+      axiosInstance.put("/auth", formData),
 
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["authUser"] });
