@@ -4,6 +4,8 @@ import { sql } from "../lib/db.js";
 
 export async function protectRoute(req: Request, res: Response, next: NextFunction) {
   try {
+    console.log(req.cookies);
+
     const token = req.cookies.jwt;
 
     if (!token) {
@@ -12,7 +14,6 @@ export async function protectRoute(req: Request, res: Response, next: NextFuncti
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET) as jwt.JwtPayload;
-
 
     if (!decoded.userId) {
       res.status(401).json({ message: "Unauthorized - invalid token" });
