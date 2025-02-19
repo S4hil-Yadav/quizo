@@ -36,9 +36,6 @@ export default function ProfileDropDown() {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="py-1 text-base">
-          <Link to="#">Add account</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild className="py-1 text-base">
           <button onClick={() => handleLogout()} className="w-full">
             Logout
           </button>

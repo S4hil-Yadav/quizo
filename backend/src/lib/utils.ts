@@ -13,5 +13,6 @@ export default function generateToken(userId: string, res: Response) {
     sameSite: "none",
   });
 
+  console.log(3, res.cookie);
   return token;
 }

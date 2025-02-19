@@ -84,8 +84,8 @@ export async function login(req: Request, res: Response, next: NextFunction) {
       next(errorHandler(400, "Password mismatch"));
       return;
     }
-
-    generateToken(users[0].id, res);
+    console.log(1, users[0].id);
+    console.log(2, generateToken(users[0].id, res));
 
     res.status(204).end();
   } catch (err) {
