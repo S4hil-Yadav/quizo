@@ -84,8 +84,7 @@ export async function login(req: Request, res: Response, next: NextFunction) {
       next(errorHandler(400, "Password mismatch"));
       return;
     }
-    console.log(1, users[0].id);
-    console.log(2, generateToken(users[0].id, res));
+    generateToken(users[0].id, res);
 
     res.status(204).end();
   } catch (err) {
@@ -146,7 +145,7 @@ export async function updateUser(req: Request, res: Response, next: NextFunction
 
     if (authUser[0].profilePicture !== userFields.profilePicture) {
       cloudinary.uploader.destroy(extractPublicId(authUser[0].profilePicture));
-      await sql`UPDATE users SET profile_picture = ${cloudinaryRes?.secure_url} WHERE id = ${req.userId};`;
+      await sql`UPDATE users SET profile_picture = ${cloudinaryRes?.secure_url || ""} WHERE id = ${req.userId};`;
     }
 
     res.status(204).end();

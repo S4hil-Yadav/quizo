@@ -4,10 +4,6 @@ import { sql } from "../lib/db.js";
 
 export async function protectRoute(req: Request, res: Response, next: NextFunction) {
   try {
-    console.log(10, req.cookies);
-    console.log(11, req.cookies.jwt);
-    console.log(12, typeof req.cookies);
-
     const token = req.cookies.jwt;
 
     if (!token) {
